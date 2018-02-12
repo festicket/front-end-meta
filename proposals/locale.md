@@ -54,6 +54,7 @@ We can model the new React Context API using the current 15.x.x release. Consumi
 ```
 
 ### Changing Locale
+
 The simplest way to reload an entire application is to reload the whole page.
 As the currently selected locale is stored in the API we can do this with confidence.
 We can negate some of the performance implications of this approach by leveraging
