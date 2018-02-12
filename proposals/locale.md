@@ -2,23 +2,24 @@
 
 ## Problem
 Breaking our monolithic application into several different applications has many benefits. It also introduces many levels of complexity.
-Locale should be managed in an application context however it can be changed in controls that live in a library context.
+The currently selected locale should be managed in an application context however it can be changed in controls that live in a library context.
 
-## Solution
 - We need to know what the currently selected locale is.
 - We need to know what to do once the locale is changed
 
 
+## Solution:
 ### Determining the current locale
 At festicket we rely on the url to determine the currently selected locale.
 Whilst this is not perfect this **is** a business requirement.
 On an application level we will need a server-side middleware that can query the festicket API
 for the currently selected locale and re-write the url if required.
+This will supply us with confidence that the url is the **single source of truth** for the currently selected locale.
 
 ### Providing Context
 We should use providers and pass the currently selected locale into the react context tree.
-This value can then be queried by using a consumer. Whilst React is about to release a [new context API which](https://medium.com/dailyjs/reacts-%EF%B8%8F-new-context-api-70c9fe01596b)
-follows this pattern, until we can update to react 16.x.x we must model this API to facilitate an easy upgrade path.
+This value can then be queried by using a consumer. Whilst React is about to release a [new context API](https://medium.com/dailyjs/reacts-%EF%B8%8F-new-context-api-70c9fe01596b)
+which follows this pattern, until we can update to react 16.x.x we must model this API to facilitate an easy upgrade path.
 
 ```js
 // Node process
