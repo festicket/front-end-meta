@@ -90,33 +90,35 @@ Or we can have the entire list of all the patterns in an array, so we can loop o
 // or you can ask for all the patterns
 router.getAllPatterns();
 
-// returns =>
-// [
-//     {
-//         name: 'homepage',
-//         pattern: '/',
-//     },
-//     {
-//         name: 'about',
-//         pattern: '/about/',
-//     },
-//     {
-//         name: 'partner:dashboard',
-//         pattern: '/partners/',
-//     },
-//     {
-//         name: 'partner:festival',
-//         pattern: '/partners/festival/:festivalPk/',
-//     },
-//     {
-//         name: 'ecommerce:festivals-list',
-//         pattern: '/festivals/',
-//     },
-//     {
-//         name: 'ecommerce:festival-guide',
-//         pattern: '/festival/:series/:edition/',
-//     },
-// ]
+/**
+returns =>
+[
+    {
+        name: 'homepage',
+        pattern: '/',
+    },
+    {
+        name: 'about',
+        pattern: '/about/',
+    },
+    {
+        name: 'partners:dashboard',
+        pattern: '/partners/',
+    },
+    {
+        name: 'partners:festival',
+        pattern: '/partners/festival/:festivalPk/',
+    },
+    {
+        name: 'ecommerce:festivals-list',
+        pattern: '/festivals/',
+    },
+    {
+        name: 'ecommerce:festival-guide',
+        pattern: '/festival/:series/:edition/',
+    },
+]
+*/
 ```
 
 ### URL generation
