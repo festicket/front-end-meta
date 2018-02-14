@@ -55,7 +55,7 @@ We can namespace the different groups using a prefix, and/or apply a group to a 
 ```javascript
 import router from '@festicket/urls';
 import genericUrls from '@content/urls';
-import parnersUrls from '@partner/urls';
+import partnersUrls from '@partners/urls';
 import ecommerceUrls from '@ecommerce/urls';
 
 router.register([
@@ -65,11 +65,11 @@ router.register([
     {
         namePrefix: 'partners',
         urlRoot: 'partners',
-        urlsMap: parnersUrls,
+        urlsMap: partnersUrls,
     },
     {
         namePrefix: 'ecommerce',
-        urlsMap: parnersUrls,
+        urlsMap: partnersUrls,
     },
 ]);
 ```
@@ -79,7 +79,7 @@ router.register([
 A pattern can easily be retrieved using the name.
 
 ```javascript
-router.getPattern('partner:festival');
+router.getPattern('partners:festival');
 
 // returns => '/partners/festival/:festivalPk/'
 ```
@@ -114,7 +114,7 @@ router.getAllPatterns();
 //     },
 //     {
 //         name: 'ecommerce:festival-guide',
-//         pattern: '/festival/:serie/:edition/',
+//         pattern: '/festival/:series/:edition/',
 //     },
 // ]
 ```
@@ -127,11 +127,11 @@ We can generate URLs referring to them using the format `prefix:name`.
 router.getUrl('homepage');
 // returns => '/'
 
-router.getUrl('partner:dashboard');
+router.getUrl('partners:dashboard');
 // returns => '/partners/'
 
 // parameters can be passed in an object
-router.getUrl('partner:festival', { festivalPk: '123'});
+router.getUrl('partners:festival', { festivalPk: '123'});
 // returns => '/partners/festival/123/'
 ```
 
