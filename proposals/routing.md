@@ -8,7 +8,7 @@ Currently for every URL we have a few different configurations.
 
 We want to manage URLs in a consistent way, with only one configuration that can be used both for routing and for generating URLs.
 
-A centralised router object can keep track of all the URL definitions. This router will generate all the different routers (React Router, Express routing etc.) and URLs.
+A centralised router object keep track of all the URL definitions. This router generates all the different routers (React Router, Express routing etc.) and URLs.
 
 ### URL definitions
 
