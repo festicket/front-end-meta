@@ -8,24 +8,49 @@ We have no convention for choosing z-index. This means that developers can set a
 ## Solution
 
 ### Base layers
-First we establish base layers for z-index values. A component's z-index should be relative to its base layer, such that the header, for example, can have its own z-index hierarchy, while remaining below all modal elements.
+First we define the layers in an object.
 
 ```js
 const layers = {
-  "-1": -1,
-  content: 1, // use this layer for new z-index requirements
-  header: 21, // the popover, for example, sits above this base layer
-  modal: 31, // the close button sits above this base layer
+  "-1": "-1",
+  "1": "1",
+  "2": "2",
+  "3": "3",
+  "4": "4",
+  "5": "5",
+  header: "101", // this includes, for example, the popover
+  modal: "102", // this includes the close button
 };
 ```
 
 ### Utility function
-We then have a utility function to set our z-index values. By default, the function returns the z-index of the baseLayer. However, if within this baseLayer a hierarchy is required, you can specify the amountToAdd.
+We then have a function that you pass a layer key to. It returns CSS with the corresponding z-index value. If the key does not exist in the layers object.
 
 ```js
-export function getZIndex(baseLayer, amountToAdd = 0) {
-  return css`
-    z-index: `${layers[baseLayer] + amountToAdd}`;
-  `;
-}
+export function getZIndex(layer) {
+  try {
+    const value = layers[layer];
+
+    // throw an error if the key isn't defined in the layers object
+    if(!value) {
+      throw(`You must use a key that's defined in the layers object`);
+    }
+
+    // if the key is defined, return css with the corresponding z-index value
+    return css`
+      z-index: ${value}
+    `;
+  }
+  catch(error) {
+    console.warn(error);
+  }
+};
+```
+
+This function can then be interpolated in styled-components.
+
+```js
+export const Header = styled.div`
+  ${getZIndex('header')};
+`;
 ```
