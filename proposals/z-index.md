@@ -13,7 +13,7 @@ First we establish base layers for z-index values. A component's z-index should 
 ```js
 const layers = {
   "-1": -1,
-  content: 1, // use this layer new z-index requirements
+  content: 1, // use this layer for new z-index requirements
   header: 21, // the popover, for example, sits above this base layer
   modal: 31, // the close button sits above this base layer
 };
