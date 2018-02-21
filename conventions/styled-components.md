@@ -32,7 +32,7 @@ I propose that we adopt a more functional approach while moving out all styles i
 So refactoring the above would look something like this:
 
 ```javascript
-// in a utilities file somwhere
+// in a utilities file somewhere
 import styled from "styled-components";
 
 export const withStyles = (...args) => Component => styled(Component)(...args);
