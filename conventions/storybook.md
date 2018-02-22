@@ -3,7 +3,9 @@
 
 ## Component variants
 
-If a component has several variants, display them together in one Story.
+To ensure all variants of a component are working, we must display them all in Stories. To ensure the Storybook tree doesn't become cluttered, display variants of a component together in one Story.
+
+### Reasoning
 
 Say we have four icon components: `Chevron Down`, `Chevron Left`, `Chevron Right` and `Chevron Up`. Each of these components has three colour variants `white`, `grey`, and `primary`. The component is also passed a boolean, `hoverable`.
 
