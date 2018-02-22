@@ -3,7 +3,7 @@
 
 ## Component variants
 
-To ensure all variants of a component are working, we must display them all in Stories. To ensure the Storybook tree doesn't become cluttered, display variants of a component together in one Story.
+To ensure all variants of a component are working, we must display them all in Stories. So that the Storybook tree doesn't become cluttered, display variants of a component together in one Story.
 
 ### Reasoning
 
