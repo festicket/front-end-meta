@@ -2,153 +2,86 @@
 
 ## Problem
 
-Currently for every URL we have a few different configurations.
+Currently every URL in our application is generated via a small function. These functions have inter-module dependencies.
+Managing many files has become a burden and enforcing patterns has become difficult.
+We have seen many occurrences of url generators not implementing locale, for example.
 
 ## Solution:
 
-We want to manage URLs in a consistent way, with only one configuration that can be used both for routing and for generating URLs.
+We want to manage URLs in a consistent way, with only one configuration that can be used both for routing paths and for generating URLs.
+We should use a centralised router object to keep track of all the URL definitions.
+This router utility should generate all the different route configurations within required by our stack (React Router, Express routing etc.) and URLs.
 
-A centralised router object keep track of all the URL definitions. This router generates all the different routers (React Router, Express routing etc.) and URLs.
+## API
 
 ### URL definitions
 
-Every URL needs a name and a pattern. We can use the React Router format for the pattern as it's the same as the one used by Express.
+Url definitions should be comprised of key/value pairs:
 
-```javascript
-var genericUrls = [
-    {
-        name: 'homepage',
-        pattern: '/',
-    },
-    {
-        name: 'about',
-        pattern: '/about/',
-    },
-];
+```js
+// app/utils/route-config.js
 
-var partnersUrls = [
-    {
-        name: 'dashboard',
-        pattern: '/',
-    },
-    {
-        name: 'festival',
-        pattern: '/festival/:festivalPk/',
-    },
-];
+import routing from '@festicket/route-manager';
 
-var ecommerceUrls = [
-    {
-        name: 'festivals-list',
-        pattern: '/festivals/',
-    },
-    {
-        name: 'festival-guide',
-        pattern: '/festival/:series/:edition/',
-    },
-];
+export const { getUrl, getPath, getAllPatterns } = routing({
+  home: '/',
+  search: '/search',
+  complex: '/complex/:param1/:param2',
+});
 ```
 
-Initialise the router with all the URLs imported from different modules.
-We can namespace the different groups using a prefix, and/or apply a group to a specific root, archiving nested URLs.
+### getUrl
 
-```javascript
-import router from '@festicket/urls';
-import genericUrls from '@content/urls';
-import partnersUrls from '@partners/urls';
-import ecommerceUrls from '@ecommerce/urls';
+ We can generate URLs by referring to them using the format `key`:
 
-router.register([
-    {
-        urlsMap: content,
-    },
-    {
-        namePrefix: 'partners',
-        urlRoot: 'partners',
-        urlsMap: partnersUrls,
-    },
-    {
-        namePrefix: 'ecommerce',
-        urlsMap: partnersUrls,
-    },
-]);
+ ```js
+import { getUrl } from 'app/utils/route-config'
+
+// Generate a simple url with no route params
+
+const homeUrl = getUrl('home');
+// returns => '/home'
+
+// Generate a complex url with many route params
+
+const complexUrl = getUrl('complex', { param1: 'test-1', param2: 'test-2' });
+// returns => /complex/test-1/test-2
+
+// Generate a url with a query
+
+const searchUrl = getUrl('search', {}, {q: 'something'});
+// returns => /search?q=something
+
+ ```
+
+
+### getPattern
+
+We can generate url Patterns by referring to them by `key`:
+
+
+```js
+import { getPattern } from 'app/utils/route-config'
+
+// Generate the home pattern
+
+const homePattern = getPattern('home');
+// returns => /home
+
+const complexPattern = getPattern('complex');
+// returns /complex/:paramq1/param2
+
 ```
 
-### Patterns
+### getPatterns
 
-A pattern can easily be retrieved using the name.
+We can get all patterns (usefull for debugging) by calling `getAllPatterns`:
 
-```javascript
-router.getPattern('partners:festival');
+```js
+import { getAllPattern } from 'app/utils/route-config'
 
-// returns => '/partners/festival/:festivalPk/'
-```
+const patterns = getAllPatterns();
 
-Or we can have the entire list of all the patterns in an array, so we can loop over it.
+// reutrns => { home: '/', search: '/search', complex: '/complex/:param1/:param2' }
 
-```javascript
-// or you can ask for all the patterns
-router.getAllPatterns();
-
-/**
-returns =>
-[
-    {
-        name: 'homepage',
-        pattern: '/',
-    },
-    {
-        name: 'about',
-        pattern: '/about/',
-    },
-    {
-        name: 'partners:dashboard',
-        pattern: '/partners/',
-    },
-    {
-        name: 'partners:festival',
-        pattern: '/partners/festival/:festivalPk/',
-    },
-    {
-        name: 'ecommerce:festivals-list',
-        pattern: '/festivals/',
-    },
-    {
-        name: 'ecommerce:festival-guide',
-        pattern: '/festival/:series/:edition/',
-    },
-]
-*/
-```
-
-### URL generation
-
-We can generate URLs referring to them using the format `prefix:name`.
-
-```javascript
-router.getUrl('homepage');
-// returns => '/'
-
-router.getUrl('partners:dashboard');
-// returns => '/partners/'
-
-// parameters can be passed in an object
-router.getUrl('partners:festival', { festivalPk: '123'});
-// returns => '/partners/festival/123/'
-```
-
-The generator checks the parameters, raising errors if the format is not correct.
-
-```javascript
-router.getUrl('ecommerce:festival-guide', { festivalPk: '123'});
-
-// Error: wrong parameters for the pattern "ecommerce:festival-guide"
-//  - the parameter "festivalPk" is not present in the pattern
-//  - the parameter "series" is required in the pattern
-//  - the parameter "edition" is required in the pattern
-
-// for wrong pattern names
-router.getUrl('not-a-thing');
-
-// Error: the patter "not-a-thing" has not being registered
 ```
