@@ -23,7 +23,7 @@ Url definitions should be comprised of key/value pairs:
 
 import routing from '@festicket/route-manager';
 
-export const { getUrl, getPath, getAllPatterns } = routing({
+export const { getUrl, getPattern, getAllPatterns } = routing({
   home: '/',
   search: '/search',
   complex: '/complex/:param1/:param2',
@@ -73,7 +73,7 @@ const complexPattern = getPattern('complex');
 
 ```
 
-### getPatterns
+### getAllPatterns
 
 We can get all patterns (usefull for debugging) by calling `getAllPatterns`:
 
