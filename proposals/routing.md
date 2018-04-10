@@ -78,7 +78,7 @@ const complexPattern = getPattern('complex');
 We can get all patterns (usefull for debugging) by calling `getAllPatterns`:
 
 ```js
-import { getAllPattern } from 'app/utils/route-config'
+import { getAllPatterns } from 'app/utils/route-config'
 
 const patterns = getAllPatterns();
 
