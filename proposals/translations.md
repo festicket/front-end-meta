@@ -18,6 +18,20 @@ The sets of terms is inspired by the one used by Transifex, the system that we u
 ## Problems
 A list of the problems of our current translations system.
 
+### No live translations
+The translations lives in the repository and new translations are downloaded manually by developers. This means that there is an unknow delay between the translators work and the translations appearing on the live website.
+
+### Race condition between work in progress
+Currently when two developer works on the same resource on two different branches they end up deleting each other work.
+
+This is because Transifex doesn't allow new strings to be pushed individually, we can only push a whole resource, this is a destructive action: if a string is stored in Transifex but is not pushed when we update the resource will be deleted.
+
+### Manual operations
+A system that involve manual operation is subject to systematic errors, we want to reduce the manual operation as much as possible.
+
+### Translator have no context of the string that are translated
+String are presented as list, this makes difficult for translation to understand where each string is used.
+
 
 ## Proposed Solutions
 A list of possible solutions to the problems listed above, the same problem may have multiple solutions, as some of this solution may solve more than one problem.
