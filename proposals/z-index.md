@@ -8,7 +8,7 @@ We have no convention for choosing z-index. This means that developers can set a
 
 ### Base layers
 
-First we define base layers in an object.
+First we define layers in an object. These base layers are 10 apart so there is room to define hierarchies within layers when necessary.
 
 ```js
 const layers = {
@@ -49,7 +49,7 @@ export const Header = styled.div`
 `;
 ```
 
-The utility funciton returns the z-index as a number so that you can manipulate this value in **exceptional** circumstances where a more specific hierarchy is required.
+The utility function returns the z-index as a number so that you can manipulate this value in **exceptional** circumstances where a more specific hierarchy is required.
 
 ```js
 export const AboveModal = styled.div`
