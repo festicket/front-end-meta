@@ -48,11 +48,3 @@ export const Header = styled.div`
   z-index: ${getZIndex('header')};
 `;
 ```
-
-The utility function returns the z-index as a number so that you can manipulate this value in **exceptional** circumstances where a more specific hierarchy is required.
-
-```js
-export const AboveModal = styled.div`
-  z-index: ${getZIndex('modal') + 1};
-`;
-```
