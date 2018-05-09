@@ -25,19 +25,16 @@ We create a function that takes a layer key and returns the corresponding z-inde
 
 ```js
 export function getZIndex(layer) {
-  try {
-    const value = layers[layer];
-
-    // throw an error if the key isn't defined in the layers object
-    if (!value) {
-      throw `You must use a key that's defined in the layers object`;
-    }
-
-    // if the key is defined, return the corresponding z-index base value
-    return value;
-  } catch (error) {
-    console.warn(error);
+  // error if the key isn't defined in the layers object
+  if (!layer in layers) {
+    return console.warn(
+      `You must use a key that's defined in the layers object`
+    );
   }
+
+  // if the key is defined, return the corresponding z-index base value
+  const value = layers[layer];
+  return value;
 }
 ```
 
