@@ -33,8 +33,7 @@ export function getZIndex(layer) {
   }
 
   // if the key is defined, return the corresponding z-index base value
-  const value = layers[layer];
-  return value;
+  return layers[layer];
 }
 ```
 
