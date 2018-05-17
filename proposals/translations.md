@@ -80,17 +80,17 @@ We should create a `transifex-cli-tools` project for managing translations on th
 #### Authorisation:
 
 - Transifex User
-    We should take the transifex user from `process.env.TRANSIFEX_USER`.
+    We take the transifex user from `process.env.TRANSIFEX_USER`.
     If `process.env.TRANSIFEX_USER` is not present in the current env prompt the user to input one.
     If `--ci` flag is used with any command `exit(1)` when the env var is not present.
 
 - Transifex Password
-    We should take the transifex password from `process.env.TRANSIFEX_PASS`.
+    We take the transifex password from `process.env.TRANSIFEX_PASS`.
     If `process.env.TRANSIFEX_PASS` is not present in the current env prompt the user to input one.
     If `--ci` flag is used with any command `exit(1)` when the env var is not present.
 
 - Transifex Project
-    We should take the transifex user from `process.env.TRANSIFEX_PROJECT`.
+    We take the transifex user from `process.env.TRANSIFEX_PROJECT`.
     If `process.env.TRANSIFEX_PROJECT` is not present in the current env use `package.json.transifex.project`.
     If `process.env.TRANSIFEX_PROJECT` or `package.json.transifex.project` is not present prompt the user to input one.
     If `--ci` flag is used with any command `exit(1)` when the project name cannot be resolved.
