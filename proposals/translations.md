@@ -144,35 +144,35 @@ These terms are inspired by the ones used by Transifex, the system that we use t
 <dl>
 
   <dt>
-    **Translation string (or just string)**
+    Translation string (or just string)
   </dt>
   <dd>
     A piece of copy in English that needs to be translated into other languages.
   </dd>
 
   <dt>
-    **Project**
+    Project
   </dt>
   <dd>
     A colletion of languages eg: en, fr, de, es ... etc
   </dd>
 
   <dt>
-    **Resource**
+    Resource
   </dt>
   <dd>
     A JSON file containing key value pairs { [Translation Id]: [Translation String] }
   </dd>
 
   <dt>
-    **Translations**
+    Translations
   </dt>
   <dd>
     A set of translation strings grouped by Language/Resource
   </dd>
 
   <dt>
-    **Translations Memory**
+    Translations Memory
   </dt>
   <dd>
     A database of previously completed translations.
@@ -182,7 +182,7 @@ These terms are inspired by the ones used by Transifex, the system that we use t
   </dd>
 
   <dt>
-    **Translations Memory Autofill**
+    Translations Memory Autofill
   </dt>
   <dd>
     Auto completion, when a new translation string is added to a resource
