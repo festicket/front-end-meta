@@ -154,14 +154,14 @@ These terms are inspired by the ones used by Transifex, the system that we use t
     Project
   </dt>
   <dd>
-    A colletion of languages eg: en, fr, de, es ... etc
+    A colletion of languages eg: `en`, `fr`, `de`, `es` ... etc
   </dd>
 
   <dt>
     Resource
   </dt>
   <dd>
-    A JSON file containing key value pairs { [Translation Id]: [Translation String] }
+    A JSON file containing key value pairs `{ [Translation Id]: [Translation String] }`
   </dd>
 
   <dt>
