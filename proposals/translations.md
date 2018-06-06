@@ -40,78 +40,14 @@ String are presented as a list. This makes it difficult for translators to under
 Solutions
 -------------
 
-### Better CLI Tooling
-We should create a `transifex-cli-tools` project for managing translations on the command line. It should contain these commands:
+### Better Tooling
 
-- `transifex-cli status`
-    Prints out whether you have any changes that are not reflected in transifex.
+Translations should be pushed to transifex reguarly. We should use the [Transifex CLI cilent](https://docs.transifex.com/client/introduction).
+On pre-commit, when commiting a translation file, we should push said resource onto transifex. Using a pre-commit has the least chance of a race condition
+(compared to using a build). If you try to push a resource to transifex which has not first been updated the pre-commit hook should fail.
+The user should then be prompted to stash changes and pull all changes into their local environment.
 
-    Options:
-    - `--ci`: If there are changes on the current branch that have not been pushed to transifex we `exit(1)`;
-      This is a useful saftey check for CI that will fail a build if a developer's translation files are out of sync.
-
-- `transifex-cli diff`
-    Shows a diff of all resources in the current translations directory compared to what is currently available on transifex.
-
-- `transifex-cli merge`
-    Merges together local changes with the ones that currently exist on transifex.
-    Checks for conflicts and if one exists `exit(1)`.
-
-    Options:
-    - `--manual`: Pulls down a copy of any conflicting resources and saves them as `{reource}.live.json`
-      This is usefull for manually resolving conficts
-
-- `transifex-cli push`
-    Push all local translations onto transifex through the REST API.
-    Checks status and if there are conflicts `exit(1)`.
-    If any `{translations_directory}/*.live.json`
-
-    Options:
-    - `--force`: Just override all live copies with fresh ones from the current translations directory
-      This is useful after resolving onflicts. We show a diff of the changes and ask the user to confirm the operation before performaing it.
-
-- `transifex-cli pull`
-    Update local copies of all local translation files.
-
-    Options:
-    - `--force`: Just override all local copies with fresh ones from transifex
-      This is useful for reseting the contents of a repository
-
-#### Authorisation:
-
-- Transifex User
-    We take the transifex user from `process.env.TRANSIFEX_USER`.
-    If `process.env.TRANSIFEX_USER` is not present in the current env prompt the user to input one.
-    If `--ci` flag is used with any command `exit(1)` when the env var is not present.
-
-- Transifex Password
-    We take the transifex password from `process.env.TRANSIFEX_PASS`.
-    If `process.env.TRANSIFEX_PASS` is not present in the current env prompt the user to input one.
-    If `--ci` flag is used with any command `exit(1)` when the env var is not present.
-
-- Transifex Project
-    We take the transifex user from `process.env.TRANSIFEX_PROJECT`.
-    If `process.env.TRANSIFEX_PROJECT` is not present in the current env use `package.json.transifex.project`.
-    If `process.env.TRANSIFEX_PROJECT` or `package.json.transifex.project` is not present prompt the user to input one.
-    If `--ci` flag is used with any command `exit(1)` when the project name cannot be resolved.
-
-- Transifex Resources
-    All resources should belong to a given project. We determine the project from the `package.json.name` field.
-    All resources should have a category value which is set to the value of the current project (where the commands are being run).
-    If there is a mismatch we `exit(1)`. This means someone has created a resource with a name that currently belongs to another project.
-    When a new resource is created we will automatically use `package.json.name` as the category value.
-
-#### Configuration
-
-All configuration lives in `package.json.transifex`.
-
-  - Transifex Project
-    As mentioned above in Authorisation
-
-  - Translations Directory
-    The directory within the current project where all local translation resources are stored.
-    Defaults to `./translations`
-
+We should also provide a script to update **all** translations locally.
 
 ### Move translations to S3
 We can store the translations on a S3 bucket.
