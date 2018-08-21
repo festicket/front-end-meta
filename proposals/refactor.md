@@ -84,6 +84,7 @@ import {<ACTION GO HERE>} from '@actions';
 // Components
 import MyComponent from '@components/MyComponent';
 
+// Selectors
 import { <SELECTORS GO HERE> } from '@selectors';
 
 // Types
