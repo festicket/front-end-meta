@@ -1,8 +1,8 @@
-# Vertical rhythm
+# Vertical margin
 
 ## Current implementations
 
-We have two main ways to control vertical rhythm: our `spacing` utility and the `<Section />` component.
+We have two main ways to control vertical margin: our `spacing` utility and the `<Section />` component.
 
 The `spacing` utility takes one of five string values (`xl`, `lg`, `md`, `sm`, `none`) or a default and returns css with `margin-bottom`.
 
@@ -33,7 +33,7 @@ We maintain the `spacing` utility and `<Section />` component, but with modifica
 The `spacing` module will be renamed and will allow an optional second argument to specify the direction of the margin.
 
 ```js
-function rhythm(size, direction = 'bottom') {
+function verticalMargin(size, direction = 'bottom') {
   try {
     if (!['top', 'bottom'].includes(direction)) {
       throw new TypeError(`direction must be either 'top' or 'bottom'`);
