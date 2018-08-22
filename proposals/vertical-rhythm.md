@@ -36,7 +36,7 @@ The `spacing` module will be renamed and will allow an optional second argument 
 function rhythm(size, direction = 'bottom') {
   try {
     if (!['top', 'bottom'].includes(direction)) {
-      throw `direction must be either 'top' or 'bottom'`;
+      throw new TypeError(`direction must be either 'top' or 'bottom'`);
     }
 
     switch(size) {
@@ -57,7 +57,7 @@ function rhythm(size, direction = 'bottom') {
   }
 
   catch(e) {
-    console.warn(e);
+    console.log(e.message);
   }
 }
 ```
