@@ -66,7 +66,7 @@ As for the `<Section />` component, it will take a boolean prop `isFirst` that w
 
 ```js
 type Props = {|
-  variant: 'section' | 'semiSection',
+  variant: 'section' | 'semi-section',
   isFirst: boolean,
   children: React.Node,
 |};
