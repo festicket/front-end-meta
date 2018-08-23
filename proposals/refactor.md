@@ -2,7 +2,9 @@
 
 ## Problem
 
-We are thinking about moving from Redux. The first step will be start from refactoring our components and separate it from store and actions. There are some components which take only few properties from the store, which we can pass as a props from component above.
+We are thinking about moving from Redux. The first step will be refactoring our components and separate presentation from data management.
+This will result in components and containers, containers manage data from the store and dispatch it to components, that only deal with the presentation.
+This will allow us the proceded with the second step: refactor containers so we can remove the connection with redux and use the standard React state instead.
 
 ## Solution
 
