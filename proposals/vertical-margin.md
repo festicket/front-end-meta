@@ -35,25 +35,29 @@ The `spacing` module will be renamed and will allow an optional second argument 
 ```js
 function verticalMargin(size, direction = 'bottom') {
   try {
-    if (!['top', 'bottom'].includes(direction)) {
+    const directions = ['top', 'bottom'];
+    if (!directions.includes(direction)) {
       throw new TypeError(`direction must be either 'top' or 'bottom'`);
     }
 
-    switch(size) {
-      case 'xl':
-        return css`
-          margin-${direction}: 40px;
-        `;
-      case 'lg':
-        return css`
-          margin-${direction}: 30px;
-        `;
-      ...
-      default:
-        return css`
-          margin-${direction}: 5px;
-        `;
+    const sizes = ['xl', 'lg', 'md', 'sm', 'none'];
+    if (!sizes.includes(size)) {
+      throw new TypeError(`size must be one of 'xl', 'lg', 'md', 'sm' and 'none'`);
     }
+
+    if (size === 'xl') {
+      return css`
+        margin-${direction}: 40px;
+      `;
+    }
+
+    if (size === 'lg') {
+      return css`
+        margin-${direction}: 30px;
+      `;
+    }
+
+    ...
   }
 
   catch(e) {
