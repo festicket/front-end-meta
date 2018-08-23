@@ -37,12 +37,12 @@ function verticalMargin(size, direction = 'bottom') {
   try {
     const directions = ['top', 'bottom'];
     if (!directions.includes(direction)) {
-      throw new TypeError(`direction must be either 'top' or 'bottom'`);
+      throw new Error(`direction must be either 'top' or 'bottom'`);
     }
 
     const sizes = ['xl', 'lg', 'md', 'sm', 'none'];
     if (!sizes.includes(size)) {
-      throw new TypeError(`size must be one of: 'xl', 'lg', 'md', 'sm' and 'none'`);
+      throw new Error(`size must be one of: 'xl', 'lg', 'md', 'sm' and 'none'`);
     }
 
     if (size === 'xl') {
@@ -75,8 +75,15 @@ type Props = {
   children: React.Node,
 };
 
+Section.defaultProps = {
+  marginTop: null,
+  marginBottom: null,
+}
+
 export default function Section(props: Props) {
   const { marginTop, marginBottom } = props;
+
+  if (!marginTop && !marginBottom) return null;
 
   return styled.section`
     margin-top: ${switchProp('marginTop', {
