@@ -87,7 +87,6 @@ export default function Section(props: Props) {
       section: '100px'
       'semi-section': '50px'
     })}
-
   `;
 }
 ```
