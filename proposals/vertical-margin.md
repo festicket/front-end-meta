@@ -61,7 +61,7 @@ function verticalMargin(size, direction = 'bottom') {
   }
 
   catch(e) {
-    console.log(e.message);
+    console.log(`${e.name}: ${e.message});
   }
 }
 ```
@@ -69,32 +69,44 @@ function verticalMargin(size, direction = 'bottom') {
 As for the `<Section />` component, it will take two props `marginTop` and `marginBotton` that each take one of two values: `section` or `semi-section`.
 
 ```js
-type Props = {
+type Props = {|
   marginTop: 'section' | 'semi-section',
   marginBottom: 'section' | 'semi-section',
   children: React.Node,
-};
-
-Section.defaultProps = {
-  marginTop: null,
-  marginBottom: null,
-}
+|};
 
 export default function Section(props: Props) {
   const { marginTop, marginBottom } = props;
 
-  if (!marginTop && !marginBottom) return null;
+  const values = ['section', 'semi-section'];
 
-  return styled.section`
-    margin-top: ${switchProp('marginTop', {
-      section: '100px',
-      'semi-section': '50px',
-    })}
-    margin-bottom: ${switchProp('marginBottom', {
-      section: '100px'
-      'semi-section': '50px'
-    })}
-  `;
+  try {
+    if (
+      (!marginTop && !marginBottom) ||
+      values.includes(marginTop) ||
+      values.includes(marginBottom)
+    ) {
+      throw new Error(
+        `You must pass a value of 'section' or 'semi-section' for at
+        least one of the two properties 'marginTop' and 'marginBottom'`
+      );
+    }
+
+    return styled.section`
+      margin-top: ${switchProp('marginTop', {
+        section: '100px',
+        'semi-section': '50px',
+      })}
+      margin-bottom: ${switchProp('marginBottom', {
+        section: '100px'
+        'semi-section': '50px'
+      })}
+    `;
+  }
+
+  catch(e) {
+    console.log(`${e.name}: ${e.message});
+  }
 }
 ```
 
