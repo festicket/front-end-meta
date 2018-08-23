@@ -42,7 +42,7 @@ function verticalMargin(size, direction = 'bottom') {
 
     const sizes = ['xl', 'lg', 'md', 'sm', 'none'];
     if (!sizes.includes(size)) {
-      throw new TypeError(`size must be one of 'xl', 'lg', 'md', 'sm' and 'none'`);
+      throw new TypeError(`size must be one of: 'xl', 'lg', 'md', 'sm' and 'none'`);
     }
 
     if (size === 'xl') {
@@ -66,34 +66,28 @@ function verticalMargin(size, direction = 'bottom') {
 }
 ```
 
-As for the `<Section />` component, it will take a boolean prop `isFirst` that will determine whether or not the margin should be added to top and bottom.
+As for the `<Section />` component, it will take two props `marginTop` and `marginBotton` that each take one of two values: `section` or `semi-section`.
 
 ```js
-type Props = {|
-  variant: 'section' | 'semi-section',
-  isFirst: boolean,
+type Props = {
+  marginTop: 'section' | 'semi-section',
+  marginBottom: 'section' | 'semi-section',
   children: React.Node,
-|};
-
-Section.defaultProps = {
-  variant: 'section',
-  isFirst: false,
 };
 
 export default function Section(props: Props) {
-  const { variant, isFirst } = props;
+  const { marginTop, marginBottom } = props;
 
   return styled.section`
-    ${switchProp('variant', {
-      section: `
-        margin-bottom: 100px;
-        ${ifProp({ isFirst: true }, `margin-top: 100px`)};
-      `,
-      'semi-section': `
-        margin-bottom: 50px;
-        ${ifProp({ isFirst: true }, `margin-top: 50px`)};
-      `,
-    }
+    margin-top: ${switchProp('marginTop', {
+      section: '100px',
+      'semi-section': '50px',
+    })}
+    margin-bottom: ${switchProp('marginBottom', {
+      section: '100px'
+      'semi-section': '50px'
+    })}
+
   `;
 }
 ```
