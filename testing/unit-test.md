@@ -9,7 +9,7 @@ Unit test are used to test individual part of the application in isolation. They
 - Test edge cases, what happen with undefined parameters, or with empty parameters?
 - Test errors, if a function is expecting a specific type of parameter test that the function is correctly raising errors.
 - Every test should be isolated, if your test share the same mocks or variables make sure to reset them with `beforeEach` and `afterEach`, if you are in doubt that some test may not be correctly isolated try to skip some of them and see if the other still pass.
-
+- If there was a bug in production it should be covered by unit test or cypress
 
 ## Don'ts
 - Write huge tests: if a test require to initialise too many components to test just one that is not a good test. If that happen refactor the component and the test to be able to have a very small test.
