@@ -19,7 +19,7 @@ Unit test are used to test individual part of the application in isolation. They
 - Write big set of fixtures for a test, same reason as above, a function should only take a very limited set of parameters. If you need too much data to test something that is sign that it's time to break down your code.
 
 ## TDD
-Unit test are a very good to practise Test Driven Development, it's not the purpose of this guide to cover the exhaustively the subject, but just to provide a quick to consult cheat sheet for TDD.
+We are not following strict TDD approach.
 
 1) Write a test for a small piece of the overall functionality.  
 2) Make it pass.  
