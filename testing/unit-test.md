@@ -21,10 +21,10 @@ Unit test are used to test individual part of the application in isolation. They
 ## TDD
 Unit test are a very good to practise Test Driven Development, it's not the purpose of this guide to cover the exhaustively the subject, but just to provide a quick to consult cheat sheet for TDD.
 
-1) Write Function definition with empty implementation.  
-2) Write a small doc for the function, you should be able to explain every function in a sentence.  
-3) Write all the test that you need for every function, they should all fail now, skip them and commit.  
-4) Un skip the first test and start the implementation, when the test is passing un skip the second, until all your test are passing. (tip: jest has a flag `--watch` to keep re running the test on file save).  
+1) Write a test for a small piece of the overall functionality.  
+2) Make it pass.  
+3) Refactor if required.  
+4) Move onto the next test.  
 
 ## Refactoring
 When refactoring a piece of code that is untested unit test are a great tool.
