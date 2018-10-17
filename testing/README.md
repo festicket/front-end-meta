@@ -6,3 +6,5 @@ This folder contains a series of conventions around testing. This conventions ar
 [Unit test](./unit-test.md)
 
 [Visual regression test (percy)](./visual-regression-test.md)
+
+[Snapshot regression test)](./snapshot-test.md)
