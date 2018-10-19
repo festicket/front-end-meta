@@ -51,6 +51,20 @@ They are similar tools that focus on static types checking.
 
 5. TypeScript implements both a type checker and a transpiler that emits plain JavaScript. Flow only does type checking and relies on Babel or flow-remove-types or some other tool to remove type annotations.
 
+# How easy would it be to migrate from flow to typescript?
+
+Migrate from Flow to Typescript is easy. It reqiured few configuration change:
+
+1. Babel
+2. Rename a JavaScript file extensions from .js to .ts
+3. Remove @flow comment
+4. Run tsc to typecheck all .ts files
+5. Fix all type errors
+
+Flow and TypeScript syntex is very similar, so it will take no long to change it.
+
+Great medium blog explaning change diffrence : https://medium.com/entria/incremental-migration-to-typescript-on-a-flowtype-codebase-515f6490d92d
+
 # Conclusion
 
 I made two project one using Flow and one using TypeScript and I found out that for me Flow is more simple and more flexible.
