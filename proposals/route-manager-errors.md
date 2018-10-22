@@ -36,7 +36,7 @@ And also check that the pattern has been registered.
 ```javascript
 router.getUrl('not-a-thing');
 
-// Error: the patter "not-a-thing" has not being registered
+// Error: the pattern "not-a-thing" has not been registered
 ```
 
 # getParams
