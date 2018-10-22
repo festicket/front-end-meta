@@ -10,7 +10,7 @@ But also help us in daily use.
 
 ## getPattern
 
-Should check if the pattern has being registered.
+Should check if the pattern has been registered.
 
 ```javascript
 router.getUrl('not-a-thing');
