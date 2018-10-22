@@ -31,7 +31,7 @@ router.getUrl('festivalGuide', { festivalPk: '123'});
 //  - the parameter "edition" is required in the pattern
 ```
 
-And also check that the pattern has being registered.
+And also check that the pattern has been registered.
 
 ```javascript
 router.getUrl('not-a-thing');
