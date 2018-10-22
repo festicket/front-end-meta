@@ -13,7 +13,7 @@ But also help us in daily use.
 Should check if the pattern has been registered.
 
 ```javascript
-router.getUrl('not-a-thing');
+router.getPattern('not-a-thing');
 
 // Error: the patter "not-a-thing" has not being registered
 ```
