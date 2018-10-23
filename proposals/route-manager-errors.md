@@ -1,7 +1,7 @@
 # Error in the route managers
 
 
-Currently our package [route-manager](https://github.com/festicket/route-manager) currently fail silently in a series of scenario.
+Currently our package [route-manager](https://github.com/festicket/route-manager) fail silently in a series of scenarios.
 I believe that should raise understandable errors if use improperly.
 
 This will protect us form involuntary changes, since a misconfiguration will trigger error in our testing suite.
@@ -20,7 +20,7 @@ router.getPattern('not-a-thing');
 
 ## getUrl
 
-Should checks the parameters, raising errors if the format is not correct.
+Should check the parameters, raising errors if the format is not correct.
 
 ```javascript
 router.getUrl('festivalGuide', { festivalPk: '123'});
