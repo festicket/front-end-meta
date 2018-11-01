@@ -53,17 +53,8 @@ They are similar tools that focus on static types checking.
 
 # How easy would it be to migrate from flow to typescript?
 
-Migrate from Flow to Typescript is easy. It reqiured few configuration change:
-
-1. Babel
-2. Rename a JavaScript file extensions from .js to .ts
-3. Remove @flow comment
-4. Run tsc to typecheck all .ts files
-5. Fix all type errors
-
-Flow and TypeScript syntex is very similar, so it will take no long to change it.
-
-Great medium blog explaning change diffrence : https://medium.com/entria/incremental-migration-to-typescript-on-a-flowtype-codebase-515f6490d92d
+We can use codemods for that which compile Flow files to TypeScript.
+https://github.com/bcherny/flow-to-typescript
 
 # Conclusion
 
