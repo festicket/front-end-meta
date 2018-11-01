@@ -9,11 +9,9 @@ They are similar tools that focus on static types checking.
 
 1. As you're using React, we might prefer Flow because it easily integrates with Babel and other infrastructure.
 
-2. Flow is known to be a simpler language than TypeScript due to it’s out of the box utility. A developer would have to learn TypeScript syntax e.g. Type Annotation and how to modify the code.
+2. Eslint plugins for React and React Native provide valuable static analysis and seem to be superior to their tslint counterparts.
 
-3. Eslint plugins for React and React Native provide valuable static analysis and seem to be superior to their tslint counterparts.
-
-4. As we are using PropTypes, It will be easier to switch to Flow.
+3. As we are using PropTypes, It will be easier to switch to Flow.
 
 ## Cons:
 
@@ -39,17 +37,15 @@ They are similar tools that focus on static types checking.
 
 2. Less flexible then Flow.
 
-#Key Differences Between TypeScript vs flow
+# Key Differences Between TypeScript vs flow
 
-1. Flow is any day a better choice to go when you have to work with type checking static kind functionalities without even writing the non-standard Javascript code i.e. the code which asks for compilation back into Javascript. To use this feature, you can write type annotations in comments rather than using them in the executable code itself.
+1. Typescript provides to you some additional language services such as code completion features, navigation and refactoring features whereas flow aims to build a deeper level of understanding of your code and is responsible for doing an interprocedural analysis.
 
-2. Typescript provides to you some additional language services such as code completion features, navigation and refactoring features whereas flow aims to build a deeper level of understanding of your code and is responsible for doing an interprocedural analysis.
+2. Difference with flow and TS syntax here - https://github.com/niieani/typescript-vs-flowtype
 
-3. Difference with flow and TS syntax here - https://github.com/niieani/typescript-vs-flowtype
+3. TypeScript wants to provide great tooling and language services for autocompletion, code navigation, and refactoring. Flow, on the other hand, develops a deeper understanding of your code and even does interprocedural analyses.
 
-4. TypeScript wants to provide great tooling and language services for autocompletion, code navigation, and refactoring. Flow, on the other hand, develops a deeper understanding of your code and even does interprocedural analyses.
-
-5. TypeScript implements both a type checker and a transpiler that emits plain JavaScript. Flow only does type checking and relies on Babel or flow-remove-types or some other tool to remove type annotations.
+4. TypeScript implements both a type checker and a transpiler that emits plain JavaScript. Flow only does type checking and relies on Babel or flow-remove-types or some other tool to remove type annotations.
 
 # How easy would it be to migrate from flow to typescript?
 
