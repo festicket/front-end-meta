@@ -25,7 +25,7 @@ They are similar tools that focus on static types checking.
 
 1. Larger community: Because it is an older project its community is larger.
 
-2. Faster then flow.
+2. Faster than flow.
 
 3. Upfront compile errors: This can probably be configured in both TypeScript and Flow, but having upfront compilation errors instead of a non mandatory type check seems to save time when testing your code by preventing you from running code that is bogus anyways.
 
@@ -35,7 +35,7 @@ They are similar tools that focus on static types checking.
 
 1. Lesser React support because its great for Angular project. But nowdays its getting better and better.
 
-2. Less flexible then Flow.
+2. Less flexible than Flow.
 
 # Key Differences Between TypeScript vs flow
 
