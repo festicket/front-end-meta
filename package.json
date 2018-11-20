@@ -1,0 +1,23 @@
+{
+  "name": "front-end-meta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/festicket/front-end-meta.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/festicket/front-end-meta/issues"
+  },
+  "homepage": "https://github.com/festicket/front-end-meta#readme",
+  "workspaces": [
+    "packages/*"
+  ]
+}
