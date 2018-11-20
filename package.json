@@ -1,6 +1,7 @@
 {
   "name": "front-end-meta",
   "version": "1.0.0",
+  "private": "true",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,6 +19,6 @@
   },
   "homepage": "https://github.com/festicket/front-end-meta#readme",
   "workspaces": [
-    "packages/*"
+    "presentations/*"
   ]
 }
