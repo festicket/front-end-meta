@@ -1,0 +1,141 @@
+import { Head } from 'mdx-deck'
+
+export { default as theme } from './theme'
+
+<Head>
+  <title>Critical Rendering Path</title>
+</Head>
+
+# Browser CRP
+
+---
+
+## Talk plan
+
+1. Intro to browser objects
+1. Browser CRP example
+1. Blocking cases
+1. Optimisations
+
+---
+
+## Browser Objects
+
+1. DOM
+1. CSSOM
+1. JavaScript
+
+---
+
+## DOM
+<img src='https://goo.gl/SP6Wbo' alt="Image alt" />
+
+- Build incrementally
+- `DOMContentLoaded` - DOM created (external resources not loaded)
+- `load` - all resources loaded
+
+```notes
+- Intrementally - no need to parse whole dock before starting to construct DOM
+```
+
+---
+
+## CSS
+<img src='https://goo.gl/LxYkQH' alt="Image alt" />
+
+- Not build incrementally, due to possible overrides
+- Doens't block DOM building
+- Blocks JS fetching and execution
+- Blocks Render Tree creation
+
+---
+
+## JavaScript
+<img src='https://goo.gl/eXtuHk' alt="Image alt" />
+
+- Fetch and execution blocks DOM building
+- Execution will be blocked by CSSOM creation
+- Speculative parsing might prefech some resources
+
+---
+
+## Page Rendering
+	Bytes => Characters => Tokens  
+		=> DOM, CSSOM, JS 
+			=> Render Tree (only visible stuff)
+				=> Layout (reflow)
+					=> Paint phase 
+
+---
+
+## Blocking example I
+<img src='https://goo.gl/cbGbjA' alt="Image alt" />
+
+- Fetch will block DOM parsing and building
+- No img and other resources further in doc will be detected and fetched
+
+---
+
+## Blocking example II
+<img src='https://goo.gl/bYnQgY' alt="Image alt" />
+
+- CSS is not blocking DOM parsing (only Render Tree building)
+- Blocks JS fetching
+- JS blocks DOM building
+
+---
+
+## Optimizations
+
+---
+
+## Speculative parsing
+
+- IE - "The lookahead downloader", Safari, Chrome - "The preload scanner"
+- While JS is fetched and executed DOM is speculatively parsed further and resources prefeched in a background
+- In FF even DOM is build speculatively
+
+---
+
+## use rel="preload" 
+ - Speculative parsing doesn't deal in the best way by itself
+ - Use for preloading img, and other external resources
+ - Not only for scripts, ex: `style`, `image`, `font` , `audio`, `video`
+
+---
+### Non optimised
+<img src='https://goo.gl/j5wrNL' alt="Image alt" />
+
+---
+### Optimised
+<img src='https://goo.gl/mbi3Sw' alt="Image alt" />
+
+---
+
+## use "defer"
+<img src='https://goo.gl/LAcfPG' alt="Image alt" />
+
+- Fetch will not block DOM parsing
+- Will execute 'defered' only when DOM is constructed before DOMContentLoaded event
+- Scripts executed in order they appear in code
+
+```notes
+- The second option to use. Use `defer` only if there is dependency between scripts
+```
+
+---
+
+## use "async"
+<img src='https://goo.gl/w7UzFr' alt="Image alt" />
+
+ - Fetch will not block DOM parsing
+ - Execute at first opportunity after fetched before `load` event is called
+ - No script order is guaranteed
+ - Will block DOM building
+
+---
+
+## Credits
+
+- <a href="https://hacks.mozilla.org/2017/09/building-the-dom-faster-speculative-parsing-async-defer-and-preload/">Building DOM faster by Milica Mihajlija </a>
+- <a href="https://developers.google.com/web/fundamentals/performance/rendering/">Rendering Performance by Paul Lewis</a>
