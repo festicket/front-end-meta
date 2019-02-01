@@ -29,6 +29,10 @@ app
 	shared
 		# Reusable functionality between features we don't want to put to app-components or ui-components
 		# In case for some reason we don't store it in ui-componenst and app-components
+		actions
+		    # redux.entities related actions, sagas and reducers
+		sagas
+		reducers
 	features
 		# A reusable complex user facing component with actions / reducers / actions included
 		# Feature cannot nest or depend on other feature
@@ -38,6 +42,8 @@ app
 			reducers
 			sagas
 			components
+			    BasketTable
+			    ... 
 			containers
 			index.js
     			# index.jsx is a contract of feature. 
@@ -57,7 +63,7 @@ app
 			 
 		Login
 			...
-	pages
+	pages (aka Scenes)
 		# A page cannot contain other pages
 		# A page can have a styles and components that are particual page layout oriented - cannot be reused in any other page
 		discovery
@@ -76,3 +82,7 @@ app
 				index.js
 
 ```
+
+## Migration plan
+
+1. Start by transforming `app/containers to features`
