@@ -86,3 +86,10 @@ app
 ## Migration plan
 
 1. Start by transforming `app/containers to features`
+
+## Links
+- [Feature Driven Architecture - Oleg Isonen](https://www.youtube.com/watch?v=BWAeYuWFHhs)
+- [Github / feature driven architecture](https://github.com/kof/feature-driven-architecture)
+- [Organizing Large React Applications](http://engineering.kapost.com/2016/01/organizing-large-react-applications/)
+- [How to better organize your React applications?](https://medium.com/@alexmngn/how-to-better-organize-your-react-applications-2fd3ea1920f1)
+- [Code Structure](https://redux.js.org/faq/code-structure)
