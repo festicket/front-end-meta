@@ -10,8 +10,9 @@
   - Very hard to get rid / refactor parts of the system, as dependencies not clear
 - Code splitting
   - Impossible to code split regarding not clear boundaries of files, needed for a given page
-- AB testing
+- QA and AB testing
   - Easy to leak logic to components level that are used in different pages
+  - **Hard for QA to identify the impact to business logic**
 - Dependencies
   - High coupling between who uses given reducer, action, saga file
 ## Feature drive architecture
@@ -20,6 +21,7 @@
   - Disposability, modifiability - can easily remove modify a feature and not break unrelated logic
   - code splitting - there is a logical separation to split a code in webpack on.
   - co-location - all feature related code is in one place, it can be removed, other things will not crash
+  - Easy for QA to identify the business logic impact
 
 ```
 ui-components
