@@ -11,7 +11,7 @@
 - Code splitting
   - Impossible to code split regarding not clear boundaries of files, needed for a given page
 - AB testing
- -  Easy to leak logic to components level that are used in different pages
+  - Easy to leak logic to components level that are used in different pages
 - Dependencies
   - High coupling between who uses given reducer, action, saga file
 ## Feature drive architecture
