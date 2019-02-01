@@ -38,6 +38,8 @@ app
 	features
 		# A reusable complex user facing component with actions / reducers / actions included
 		# Feature cannot nest or depend on other feature
+		# If some redux branch is shared between different components, maybe they all belong to the same feature
+		# Idealy feature should have a isolated redux branch
 		Basket
 			actions
 			    # Actions, reducers and sagas that related to redux non entity branch	
