@@ -46,7 +46,7 @@ export function Location({ x, y }: FestivalModel['location']) {
 }
 ```
 
-### Option 3
+## Option 3
 
 Our model type is composed of other types. This means we can readily import the `FestivalLocation` type in `Location`. Again, we avoid duplication and ensure consistency but the 'dumb' component becomes less dumb. Also, our generic types file becomes very bloated.
 
